@@ -1,0 +1,20 @@
+<section class="container">
+  <h1 class="page-main-title">Banco SuBanco</h1>
+  <h2>Bienvenido {{_username}} </h2>
+
+  <section class="info-box">
+    <h3>Mis créditos</h3>
+    <div>
+      <div *ngIf="!_hasJobInfo">
+        <p>Usted no tiene créditos en este momento. <br><br>
+          Por favor llene la siguiente información para solicitar
+          uno.</p>
+        <app-job-register (creditSuccesfull)="GetCreditValue($event)"></app-job-register>
+      </div>
+
+      <div *ngIf="_hasJobInfo">
+        <p style="text-align:center">Crédito 00001.</p>
+      </div>
+    </div>
+  </section>
+</section>

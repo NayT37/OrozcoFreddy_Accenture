@@ -1,0 +1,30 @@
+form {
+    div {
+        &:nth-child(5) {
+            p {
+                width: 50%;
+                margin: 0 auto;
+            }
+            label {
+                text-align: center;
+                width: 100%;
+            }
+            input {
+                width: 100%;
+                height: 0.9rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    form {
+        div {
+            &:nth-child(5) {
+                p {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+<h4 class="form-title">Registro</h4>
+<!-- Creating the register form -->
+<form #form="ngForm" (submit)="SendRegisterInfo(form)" autocomplete="off">
+
+  <!-- Name Field -->
+  <div>
+    <label>Nombres</label> <input type="text" name="Name" [(ngModel)]="service.formClientData.Name" required #Name="ngModel">
+    <!-- Some feedback text -->
+    <p *ngIf="Name.invalid && Name.touched" class="feedback-txt">El nombre {{Name.value}} no es válido.</p>
+  </div>
+
+  <!-- Lastname Field -->
+  <div>
+    <label>Apellidos</label> <input type="text" name="LastName" required #LastName="ngModel" [(ngModel)]="service.formClientData.LastName">
+    <!-- Some feedback text -->
+    <p *ngIf="LastName.invalid && LastName.touched" class="feedback-txt">El apellido {{LastName.value}} no es válido.</p>
+  </div>
+
+  <!-- ID Number Field -->
+  <div>
+    <label>Número de Identificación</label> <input name="NumberID" required #NumberID="ngModel" [(ngModel)]="service.formClientData.NumberID"
+      (input)="ValidateIDNumber($event.target.value)">
+    <!-- Some feedback text -->
+    <p *ngIf="NumberID.invalid && NumberID.touched" class="feedback-txt">El número de Identificación no puede estar
+      vacío.</p>
+    <!-- Some feedback text -->
+    <p *ngIf="!_idIsNumber && NumberID.touched" class="feedback-txt">Por favor introduzca solo números.</p>
+  </div>
+
+  <!-- Born Date Field -->
+  <div>
+    <label>Fecha de Nacimiento</label> <input type="date" name="BornDate" required #BornDate="ngModel" [(ngModel)]="service.formClientData.BornDate"
+      (input)="ValidateDate($event.target.value)">
+    <!-- Some feedback text -->
+    <p *ngIf="BornDate.invalid && BornDate.touched || !_isAdult && BornDate.touched" class="feedback-txt">La fecha
+      {{BornDate.value}} no
+      corresponde a un
+      adulto.</p>
+  </div>
+
+  <!-- Person Type Field (Jurídica is not active just for work purposes) -->
+  <div>
+    <p>Tipo de Persona</p>
+    <input type="radio" name="personType" id="natural-input" value="natural" required #PersonType="ngModel" [(ngModel)]="service.formClientData.PersonType">
+    <label for="natural-input">Natural</label>
+  </div>
+
+  <!--Submit Button is disabled if is not an adult, if ID is not a number and/or if form is invalid -->
+  <button type="submit" [disabled]="form.invalid || !_isAdult || !_idIsNumber">Registrarme</button>
+</form>

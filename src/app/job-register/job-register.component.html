@@ -1,0 +1,45 @@
+<h4 class="form-title">Información Empresarial</h4>
+<!-- Creating the register form -->
+<form #form="ngForm" (submit)="SendRegisterInfo(form)" autocomplete="off">
+  <!-- Company Name Field -->
+  <div>
+    <label>Nombre de la empresa en la que labora actualmente.</label>
+    <input type="text" name="CompanyName" [(ngModel)]="service.formJobData.CompanyName" required #CompanyName="ngModel">
+    <!-- Some feedback text -->
+    <p *ngIf="CompanyName.invalid && CompanyName.touched" class="feedback-txt">El nombre de empresa
+      no puede estar vacío.</p>
+  </div>
+
+  <!-- CompanyNIT Field -->
+  <div>
+    <label>NIT de la empresa en la que labora actualmente (sin puntos ni comas).</label>
+    <input name="CompanyNIT" required #CompanyNIT="ngModel" [(ngModel)]="service.formJobData.CompanyNIT" (input)="ValidateNIT($event.target.value)">
+    <!-- Some feedback text -->
+    <p *ngIf="CompanyNIT.invalid && CompanyNIT.touched" class="feedback-txt">El NIT no puede estar vacío.</p>
+    <!-- Some feedback text -->
+    <p *ngIf="!isValidNIT && CompanyNIT.touched" class="feedback-txt">Por favor introduzca solo números.</p>
+  </div>
+
+  <!-- Admission Date Field -->
+  <div>
+    <label>Fecha de ingreso a la empresa en la que labora actualmente.</label>
+    <input type="date" name="AdmissionDate" required #AdmissionDate="ngModel" [(ngModel)]="service.formJobData.AdmissionDate"
+      (input)="ValidateAdmissionDate($event.target.value)">
+    <!-- Some feedback text -->
+    <p *ngIf="AdmissionDate.invalid && AdmissionDate.touched || !isValidDate && AdmissionDate.touched" class="feedback-txt">La
+      fecha {{AdmissionDate.value}} no es un valor válido</p>
+  </div>
+
+  <!-- Salary Field -->
+  <div>
+    <label>Salario mensual (sin puntos ni comas).</label>
+    <input type="text" name="Salary" required #Salary="ngModel" [(ngModel)]="service.formJobData.Salary" (input)="ValidateSalary($event.target.value)">
+    <!-- Some feedback text -->
+    <p *ngIf="Salary.invalid && Salary.touched || !isValidSalary && Salary.touched" class="feedback-txt">{{Salary.value}}
+      no es un valor válido.</p>
+  </div>
+
+  <!--Submit Button is disabled if is not an adult, if ID is not a number and/or if form is invalid -->
+  <button [disabled]="form.invalid || !isValidNIT || !isValidDate || !isValidSalary">Solicitar
+    Crédito</button>
+</form>

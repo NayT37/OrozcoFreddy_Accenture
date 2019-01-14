@@ -1,0 +1,11 @@
+<h4 class="form-title">Iniciar Sesión</h4>
+<!-- Creating the register form -->
+<form #form="ngForm" (submit)="DBValidationCorrect(form)" autocomplete="off">
+  <div>
+    <label>Número de Identificación</label>
+    <input type="text" required name="NumberID" [(ngModel)]="service.loginData" #NumberID="ngModel" (input)="ValidateIDNumber($event.target.value)">
+    <!-- Some feedback text -->
+    <p *ngIf="!_isValid && NumberID.touched" class="feedback-txt">El número de Identificación no es válido.</p>
+  </div>
+  <button type="submit" [disabled]="!_isValid">Ingresar</button>
+</form>

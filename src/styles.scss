@@ -1,0 +1,123 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'assets/common';
+* {
+    /* border: 1px solid rgba($color: red, $alpha: 0.3); */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    width: 100%;
+}
+
+h2 {
+    margin-bottom: 1rem;
+}
+
+h3 {
+    margin-bottom: 1rem;
+}
+
+h4 {
+    margin-bottom: 1rem;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    div {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+        label {
+            margin: 0 auto;
+            width: 50%;
+            margin-bottom: 0.5rem;
+        }
+        input {
+            margin: 0 auto;
+            width: 50%;
+            border-radius: 5px;
+            height: 2rem;
+        }
+        :last-child {
+            margin-bottom: 0;
+        }
+    }
+    button {
+        height: 2.5rem;
+        width: 95%;
+        margin: 0 auto;
+        max-width: 10rem;
+    }
+}
+
+button {
+    border-radius: 10px;
+}
+
+input.ng-invalid.ng-touched {
+    border-color: $error-clr;
+}
+
+.container {
+    display: flex;
+    width: 90%;
+    margin: 2rem auto 3rem auto;
+    max-width: $max-width;
+    flex-direction: column;
+}
+
+.feedback-txt {
+    color: $error-clr;
+    font-size: 10pt;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+}
+
+.info-box {
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 0.8rem;
+    p {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+
+.page-main-title {
+    margin-bottom: 2rem;
+}
+
+.form-title {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+    form {
+        div {
+            label {
+                width: 100%;
+            }
+            input {
+                width: 100%;
+                border-radius: 5px;
+            }
+        }
+    }
+    .info-box {
+        padding: 0.5rem;
+        p {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,18 @@
+<section class="container">
+  <h1 class="page-main-title">
+    Bienvenido al Banco SuBanco
+  </h1>
+
+  <div>
+    <button (click)="UserClickAcount(true)">
+      <p>Ya tengo una cuenta</p>
+    </button>
+    <button (click)="UserClickAcount(false)">
+      <p>No tengo una cuenta</p>
+    </button>
+  </div>
+
+
+  <app-login *ngIf="hasAccount"></app-login>
+  <app-register *ngIf="!hasAccount"></app-register>
+</section>
